@@ -19,8 +19,26 @@
     $statement->execute();
     $statement->bind_result($id);
     $statement->fetch();
+    $statement->close();
+    
+    // Get all present rows
+    $statement = $db->prepare("SELECT
+      COUNT(id)
+    FROM
+        `notes` as nt
+    WHERE 
+        nt.`board_id`=".$id."");
 
-    $response = array('id' => $id);
+    if (!$statement) {
+      echo 'Error during equery execution';
+      exit;
+    }
+
+    $statement->execute();
+    $statement->bind_result($count);
+    $statement->fetch();
+
+    $response = array('id' => $id, 'count' => $count);
     
     echo json_encode($response);
     

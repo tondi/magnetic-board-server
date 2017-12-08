@@ -8,6 +8,7 @@
 
     $boardId = $_GET['boardId'];
     $noteId = $_GET['noteId'];
+    $noteId = $_GET['noteId'];
     $sizeX = $_GET['sizeX'];
     $sizeY = $_GET['sizeY'];
 

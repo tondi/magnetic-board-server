@@ -19,6 +19,8 @@
         b.`id`=".$id." 
         AND 
         nt.`board_id`=b.`id`
+        AND
+        nt.`is_hidden`=0
     ORDER BY
     nt.`updated_at` ASC");
 
