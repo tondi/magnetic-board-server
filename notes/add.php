@@ -31,16 +31,8 @@
     $statement->execute();
     $statement->close();
 
-    // Getting last inserted row id
-    $statement = $db->prepare("SELECT LAST_INSERT_ID()"); 
-    if (!$statement) {
-      echo 'Error during equery execution';
-      exit;
-    }
-    $statement->execute();
-    $statement->bind_result($id);
-    $statement->fetch();
-    $statement->close();
+    // Get id of inserted row
+    $id = mysqli_insert_id($db);
 
     $response = array('status' => 'OK', 'id' => $id);
 
